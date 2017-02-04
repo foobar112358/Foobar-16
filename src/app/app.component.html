@@ -1,3 +1,12 @@
-<h1>
-  {{title}}
-</h1>
+<md-card>
+  <md-card-content>
+    {{title}}
+  </md-card-content>
+</md-card>
+<md-card id="outlet">
+  <md-card-content>
+    <router-outlet></router-outlet>
+  </md-card-content>
+  <md-card-subtitle>Router Outlet</md-card-subtitle>
+</md-card>
+<app-footer></app-footer>
