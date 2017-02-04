@@ -1,0 +1,8 @@
+.account{
+    width: fit-content;
+    height: fit-content;
+    margin-right: 10px;
+    margin-left: auto;
+    z-index: 250;
+    margin-bottom: -2em;
+}

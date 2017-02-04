@@ -3,12 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { LoggedInGuard } from './login.guard';
 import { HomeScreenComponent } from './home-screen/home-screen.component';
-import { LoginScreenComponent } from './login-screen/login-screen.component';
+import { GuardedComponent } from './guarded/guarded.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
-    { path: 'home', component: HomeScreenComponent, canActivate: [ LoggedInGuard ] },
-    { path: 'login', component: LoginScreenComponent },
+    { path: 'home', component: HomeScreenComponent },
+    { path: 'guarded', component: GuardedComponent, canActivate: [ LoggedInGuard ] },
 ];
 
 export const appRoutingProviders: any[] = [

@@ -6,12 +6,13 @@ import { MaterialModule } from '@angular/material';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import { AppRoutingModule, appRoutingProviders } from './app-routing.module';
 import { LoginService } from './login.service';
+
 import { AppComponent } from './app.component';
+import { AccountDisplayComponent } from './account-display/account-display.component';
+import { MenuComponent } from './menu/menu.component';
 import { HomeScreenComponent } from './home-screen/home-screen.component';
+import { GuardedComponent } from './guarded/guarded.component';
 import { FooterComponent } from './footer/footer.component';
-import { LoginScreenComponent } from './login-screen/login-screen.component';
-
-
 
 export const firebaseConfig = {
       apiKey: "AIzaSyBa1NobiJohnNG6LnsTTkYUts5HqAnBA_8",
@@ -26,16 +27,18 @@ export const firebaseAuthConfig = {
 @NgModule({
   declarations: [
     AppComponent,
+    AccountDisplayComponent,
+    MenuComponent,
     HomeScreenComponent,
-    FooterComponent,
-    LoginScreenComponent
+    GuardedComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
-    MaterialModule,
+    MaterialModule.forRoot(),
     AppRoutingModule
   ],
   providers: [ LoginService, appRoutingProviders ],

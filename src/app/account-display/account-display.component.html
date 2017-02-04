@@ -1,0 +1,20 @@
+<div class="account">
+  <md-card *ngIf='loginService.isAuthenticated'>
+    <span mdTooltip="{{ loginService.displayName }}">
+      <img md-card-avatar  [mdMenuTriggerFor]="account" [src]='loginService.photoUrl'>
+    </span>
+    <md-menu #account="mdMenu">
+      <button md-menu-item (click)="logOut()">LogOut</button>
+      <button md-menu-item>Item 2</button>
+    </md-menu>
+  </md-card>
+  <md-card *ngIf='!loginService.isAuthenticated'>
+    <span mdTooltip="{{ loginService.displayName }}">
+      <img md-card-avatar  [mdMenuTriggerFor]="account2" src="https://image.freepik.com/free-icon/male-user-shadow_318-34042.jpg">
+    </span>
+    <md-menu #account2="mdMenu">
+      <button md-menu-item (click)="login()">Login</button>
+      <button md-menu-item>Item 2</button>
+    </md-menu>
+  </md-card>
+</div>

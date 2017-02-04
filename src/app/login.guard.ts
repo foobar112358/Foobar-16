@@ -19,7 +19,7 @@ export class LoggedInGuard implements CanActivate {
             authenticated = true;
         }
         else {
-            this.router.navigate(['/login']);
+            this.router.navigate(['/home']);
         }
         console.log("Returning from Guard function with: " + authenticated);
         return authenticated;
