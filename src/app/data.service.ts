@@ -7,10 +7,8 @@ export class DataService {
 
   constructor(
       private af: AngularFire
-  ) { 
-    this.admins = af.database.list('/access/admins');
-  }
-  admins: FirebaseListObservable<Users[]>;
+  ) { }
+
 
   baseUrl: string = 'https://whatsup-c2af3.firebaseio.com/';
 

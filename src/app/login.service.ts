@@ -36,14 +36,14 @@ export class LoginService {
   }
 
   checkAdmin(uid){
-      this.dataService.getAdmins()
-        .subscribe(admins =>{
-          for(let x = 0; x < admins.length ; x++ ){
-            if(admins[x].uid == uid){
-              this.isAdmin = true;
-            }
+    this.dataService.getAdmins()
+      .subscribe(admins =>{
+        for(let x = 0; x < admins.length ; x++ ){
+          if(admins[x].uid == uid){
+            this.isAdmin = true;
           }
-        })
+        }
+      })
   }
 
   login(): firebase.Promise<FirebaseAuthState> {
