@@ -1,3 +1,14 @@
-<p>
-  manage-admin-access works!
-</p>
+<md-card>
+  <md-card-title>Add admin</md-card-title>
+  <md-card-content>
+    <md-input-container>
+      <input md-input type="text" #name placeholder="Name" autocomplete="off"/>
+    </md-input-container>
+    <md-input-container>
+      <input md-input type="text" #uid placeholder="Uid" autocomplete="off"/>
+    </md-input-container>
+  </md-card-content>
+  <md-card-actions>
+      <button md-button (click)="addAdmin(name, uid)">Add</button>
+  </md-card-actions>
+</md-card>

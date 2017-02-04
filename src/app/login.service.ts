@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFire, AuthProviders, AuthMethods, FirebaseAuthState } from 'angularfire2';
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
+import { DataService } from './data.service';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -15,6 +16,7 @@ export class LoginService {
 
   constructor(
     private af: AngularFire,
+    private dataService: DataService,
     private router: Router
     ) {}
 
@@ -25,15 +27,23 @@ export class LoginService {
       this.photoUrl = authState.auth.photoURL;
       this.isAuthenticated = true;
       if (authState.google) {
-        console.log(authState.auth.uid);//nota sem id fyrir admins?
         localStorage.setItem('idToken', (authState.google as any).idToken);
         localStorage.setItem('accessToken', (authState.google as any).accessToken);
-        if(authState.auth.uid == "Q8OnKwWICEYXqwMofklpKMhMUV13"){
-          this.isAdmin = true;
-        }
+        this.checkAdmin(authState.auth.uid);
       }
     }
     return authState;
+  }
+
+  checkAdmin(uid){
+      this.dataService.getAdmins()
+        .subscribe(admins =>{
+          for(let x = 0; x < admins.length ; x++ ){
+            if(admins[x].uid == uid){
+              this.isAdmin = true;
+            }
+          }
+        })
   }
 
   login(): firebase.Promise<FirebaseAuthState> {
