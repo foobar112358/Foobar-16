@@ -8,6 +8,7 @@ import { AppRoutingModule, appRoutingProviders } from './app-routing.module';
 import { MdDialogModule } from '@angular/material';
 
 import { LoginService } from './login.service';
+import { DialogService } from './dialog.service';
 
 import { AppComponent } from './app.component';
 import { AccountDisplayComponent } from './account-display/account-display.component';
@@ -46,7 +47,7 @@ export const firebaseAuthConfig = {
     MdDialogModule.forRoot(),
     AppRoutingModule
   ],
-  providers: [ LoginService, appRoutingProviders ],
+  providers: [ DialogService, LoginService, appRoutingProviders ],
   bootstrap: [AppComponent],
   entryComponents:[
     ManageAdminAccessComponent
