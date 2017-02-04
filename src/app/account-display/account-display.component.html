@@ -5,12 +5,6 @@
     </span>
     <md-card-footer *ngIf="loginService.isAdmin">Admin</md-card-footer>
     <md-menu #account="mdMenu">
-      <button md-menu-item [mdMenuTriggerFor]="options" *ngIf="loginService.isAdmin">Options</button>
-        <md-menu #options="mdMenu">
-          <button md-menu-item>Add Product</button>
-          <button md-menu-item>View Users</button>
-          <button md-menu-item (click)="openAdmin()">Manage Admins</button>
-        </md-menu>
       <button md-menu-item (click)="logOut()">LogOut</button>
     </md-menu>
   </md-card>

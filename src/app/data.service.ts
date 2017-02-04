@@ -9,7 +9,7 @@ export class DataService {
       private af: AngularFire
   ) { }
 
-
+  dynamicDialogMessages: string = "";
   baseUrl: string = 'https://whatsup-c2af3.firebaseio.com/';
 
   getAdmins(){

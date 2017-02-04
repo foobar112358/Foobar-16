@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../login.service';
 import { DialogService } from '../dialog.service';
+import { DataService } from '../data.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,6 +14,7 @@ export class AccountDisplayComponent implements OnInit {
   constructor(
     private loginService: LoginService,
     private dialogService: DialogService,
+    private datatService: DataService,
     private router: Router
     ) { }
     
@@ -22,15 +24,16 @@ export class AccountDisplayComponent implements OnInit {
   }
 
   login(){
-    console.log("Starting Login Page. Authenticated is: " + this.loginService.isAuthenticated);
     if (this.loginService.isAuthenticated) {
       this.router.navigate(['/home']);
 
     } else {
       this.loginService.login().then((authState) => {
         if (authState && authState.uid) {
-          console.log("Login successful for " + authState.auth.displayName);
-          this.router.navigate(['/home']);
+          this.datatService.dynamicDialogMessages = "Login successful for " + authState.auth.displayName;
+          this.dialogService.openDynamic();
+          this.dialogService.closeDialogTimeout();
+          this.router.navigate(['/guarded']);
         } else {
           this.errorDuringLogin = true;
         }
@@ -40,10 +43,6 @@ export class AccountDisplayComponent implements OnInit {
 
   logOut(){
     this.loginService.logout();
-  }
-
-  openAdmin(){
-    this.dialogService.openManageAdmin();
   }
 
 }

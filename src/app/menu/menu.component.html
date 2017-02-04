@@ -3,5 +3,11 @@
     <md-menu #menu="mdMenu">
       <button md-menu-item routerLink="/home">Home</button>
       <button md-menu-item routerLink="/guarded">Guarded</button>
+      <button md-menu-item [mdMenuTriggerFor]="options" *ngIf="loginService.isAdmin">Options</button>
+      <md-menu #options="mdMenu">
+        <button md-menu-item>Add Product</button>
+        <button md-menu-item>View Users</button>
+        <button md-menu-item (click)="openAdmin()">Manage Admins</button>
+      </md-menu>
     </md-menu>
 </div>

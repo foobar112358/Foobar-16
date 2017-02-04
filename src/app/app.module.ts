@@ -19,6 +19,7 @@ import { HomeScreenComponent } from './home-screen/home-screen.component';
 import { GuardedComponent } from './guarded/guarded.component';
 import { FooterComponent } from './footer/footer.component';
 import { ManageAdminAccessComponent } from './dialogs/manage-admin-access/manage-admin-access.component';
+import { DynamicDialogComponent } from './dialogs/dynamic-dialog/dynamic-dialog.component';
 
 export const firebaseConfig = {
       apiKey: "AIzaSyBa1NobiJohnNG6LnsTTkYUts5HqAnBA_8",
@@ -38,7 +39,8 @@ export const firebaseAuthConfig = {
     HomeScreenComponent,
     GuardedComponent,
     FooterComponent,
-    ManageAdminAccessComponent
+    ManageAdminAccessComponent,
+    DynamicDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,8 @@ export const firebaseAuthConfig = {
   providers: [ AdminService, DataService, DialogService, LoginService, appRoutingProviders ],
   bootstrap: [AppComponent],
   entryComponents:[
-    ManageAdminAccessComponent
+    ManageAdminAccessComponent,
+    DynamicDialogComponent
   ]
 })
 export class AppModule { }

@@ -72,7 +72,7 @@ export class LoginService {
         method: AuthMethods.Popup
       }).then((authState) => {
         console.log("Successful OAuth-based Login");
-        return this.storeAuthInfo(authState);
+        return this.storeAuthInfo(authState);    
       }).catch((err) => {
         console.log(err);
       });
