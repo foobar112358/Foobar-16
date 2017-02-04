@@ -20,6 +20,7 @@ import { GuardedComponent } from './guarded/guarded.component';
 import { FooterComponent } from './footer/footer.component';
 import { ManageAdminAccessComponent } from './dialogs/manage-admin-access/manage-admin-access.component';
 import { DynamicDialogComponent } from './dialogs/dynamic-dialog/dynamic-dialog.component';
+import { SomethingComponent } from './something/something.component';
 
 export const firebaseConfig = {
       apiKey: "AIzaSyBa1NobiJohnNG6LnsTTkYUts5HqAnBA_8",
@@ -40,7 +41,8 @@ export const firebaseAuthConfig = {
     GuardedComponent,
     FooterComponent,
     ManageAdminAccessComponent,
-    DynamicDialogComponent
+    DynamicDialogComponent,
+    SomethingComponent
   ],
   imports: [
     BrowserModule,

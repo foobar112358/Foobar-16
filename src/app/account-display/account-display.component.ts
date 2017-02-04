@@ -30,8 +30,7 @@ export class AccountDisplayComponent implements OnInit {
     } else {
       this.loginService.login().then((authState) => {
         if (authState && authState.uid) {
-          this.datatService.dynamicDialogMessages = "Login successful for " + authState.auth.displayName;
-          this.dialogService.openDynamic();
+          this.dialogService.openDynamic("Login successful for " + authState.auth.displayName);
           this.dialogService.closeDialogTimeout();
           this.router.navigate(['/guarded']);
         } else {

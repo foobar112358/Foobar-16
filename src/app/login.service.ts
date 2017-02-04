@@ -3,6 +3,7 @@ import { AngularFire, AuthProviders, AuthMethods, FirebaseAuthState } from 'angu
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
 import { DataService } from './data.service';
+import { DialogService } from './dialog.service';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -17,6 +18,7 @@ export class LoginService {
   constructor(
     private af: AngularFire,
     private dataService: DataService,
+    private dialogService: DialogService,
     private router: Router
     ) {}
 
@@ -59,10 +61,9 @@ export class LoginService {
       };
       const credential = firebase.auth.GoogleAuthProvider.credential(idToken, accessToken);
       return this.af.auth.login(credential, authConfig).then((authState) => {
-        console.log("Successful Token-based Login");
         return this.storeAuthInfo(authState);
       }).catch((err) => {
-        console.log("Error with auth token: " + err, " Clearing cached token..");
+        this.dialogService.openDynamic("Error with auth token: " + err + " Clearing cached token..");
         localStorage.setItem('idToken', '');
         localStorage.setItem('accessToken', '');
       });
@@ -71,7 +72,6 @@ export class LoginService {
       return this.af.auth.login({
         method: AuthMethods.Popup
       }).then((authState) => {
-        console.log("Successful OAuth-based Login");
         return this.storeAuthInfo(authState);    
       }).catch((err) => {
         console.log(err);
