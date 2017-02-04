@@ -4,8 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
-import { AppRoutingModule, appRoutingProviders } from './_services/app-routing.module';
-import { LoginService } from './_services/login.service';
+import { AppRoutingModule, appRoutingProviders } from './app-routing.module';
+import { MdDialogModule } from '@angular/material';
+
+import { LoginService } from './login.service';
 
 import { AppComponent } from './app.component';
 import { AccountDisplayComponent } from './account-display/account-display.component';
@@ -13,6 +15,7 @@ import { MenuComponent } from './menu/menu.component';
 import { HomeScreenComponent } from './home-screen/home-screen.component';
 import { GuardedComponent } from './guarded/guarded.component';
 import { FooterComponent } from './footer/footer.component';
+import { ManageAdminAccessComponent } from './dialogs/manage-admin-access/manage-admin-access.component';
 
 export const firebaseConfig = {
       apiKey: "AIzaSyBa1NobiJohnNG6LnsTTkYUts5HqAnBA_8",
@@ -31,7 +34,8 @@ export const firebaseAuthConfig = {
     MenuComponent,
     HomeScreenComponent,
     GuardedComponent,
-    FooterComponent
+    FooterComponent,
+    ManageAdminAccessComponent
   ],
   imports: [
     BrowserModule,
@@ -39,9 +43,13 @@ export const firebaseAuthConfig = {
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     MaterialModule.forRoot(),
+    MdDialogModule.forRoot(),
     AppRoutingModule
   ],
   providers: [ LoginService, appRoutingProviders ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[
+    ManageAdminAccessComponent
+  ]
 })
 export class AppModule { }

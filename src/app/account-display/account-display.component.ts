@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../_services/login.service';
+import { LoginService } from '../login.service';
+import { DialogService } from '../dialog.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,7 +11,8 @@ import { Router } from '@angular/router';
 export class AccountDisplayComponent implements OnInit {
 
   constructor(
-    private loginService: LoginService, 
+    private loginService: LoginService,
+    private dialogService: DialogService,
     private router: Router
     ) { }
     
@@ -39,4 +41,9 @@ export class AccountDisplayComponent implements OnInit {
   logOut(){
     this.loginService.logout();
   }
+
+  openAdmin(){
+    this.dialogService.openManageAdmin();
+  }
+
 }
