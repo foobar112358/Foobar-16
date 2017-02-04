@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFire, AuthProviders, AuthMethods, FirebaseAuthState } from 'angularfire2';
 import * as firebase from 'firebase';
+import { Router } from '@angular/router';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -8,11 +9,13 @@ import 'rxjs/add/operator/toPromise';
 export class LoginService {
 
   public isAuthenticated = false;
+  public isAdmin = false;
   public displayName: string = '';
   public photoUrl: string = '';
 
   constructor(
-    private af: AngularFire
+    private af: AngularFire,
+    private router: Router
     ) {}
 
 
@@ -22,8 +25,12 @@ export class LoginService {
       this.photoUrl = authState.auth.photoURL;
       this.isAuthenticated = true;
       if (authState.google) {
+        console.log(authState.auth.uid);//nota sem id fyrir admins?
         localStorage.setItem('idToken', (authState.google as any).idToken);
         localStorage.setItem('accessToken', (authState.google as any).accessToken);
+        if(authState.auth.uid == "Q8OnKwWICEYXqwMofklpKMhMUV13"){
+          this.isAdmin = true;
+        }
       }
     }
     return authState;
@@ -64,10 +71,12 @@ export class LoginService {
 
   logout() {
     this.isAuthenticated = false;
+    this.isAdmin = false;
     this.displayName = this.photoUrl = '';
     this.af.auth.logout();
     localStorage.setItem('idToken', '');
     localStorage.setItem('accessToken', '');
+    this.router.navigate(['/home']);
   }
 
 }

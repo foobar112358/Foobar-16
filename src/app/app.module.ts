@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
-import { AppRoutingModule, appRoutingProviders } from './app-routing.module';
-import { LoginService } from './login.service';
+import { AppRoutingModule, appRoutingProviders } from './_services/app-routing.module';
+import { LoginService } from './_services/login.service';
 
 import { AppComponent } from './app.component';
 import { AccountDisplayComponent } from './account-display/account-display.component';

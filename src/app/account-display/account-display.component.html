@@ -3,18 +3,23 @@
     <span mdTooltip="{{ loginService.displayName }}">
       <img md-card-avatar  [mdMenuTriggerFor]="account" [src]='loginService.photoUrl'>
     </span>
+    <md-card-footer *ngIf="loginService.isAdmin">Admin</md-card-footer>
     <md-menu #account="mdMenu">
+      <button md-menu-item [mdMenuTriggerFor]="options" *ngIf="loginService.isAdmin">Options</button>
+        <md-menu #options="mdMenu">
+          <button md-menu-item>Add Product</button>
+          <button md-menu-item>View Users</button>
+          <button md-menu-item>Manage Admins</button>
+        </md-menu>
       <button md-menu-item (click)="logOut()">LogOut</button>
-      <button md-menu-item>Item 2</button>
     </md-menu>
   </md-card>
   <md-card *ngIf='!loginService.isAuthenticated'>
     <span mdTooltip="{{ loginService.displayName }}">
-      <img md-card-avatar  [mdMenuTriggerFor]="account2" src="https://image.freepik.com/free-icon/male-user-shadow_318-34042.jpg">
+      <img md-card-avatar  [mdMenuTriggerFor]="logIn" src="https://image.freepik.com/free-icon/male-user-shadow_318-34042.jpg">
     </span>
-    <md-menu #account2="mdMenu">
+    <md-menu #logIn="mdMenu">
       <button md-menu-item (click)="login()">Login</button>
-      <button md-menu-item>Item 2</button>
     </md-menu>
   </md-card>
 </div>
